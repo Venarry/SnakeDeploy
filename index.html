@@ -40,7 +40,7 @@
     </div>
     <div id="loading-cover" style="display:none;">
         <div id="unity-loading-bar">
-            
+            <div id="unity-logo"><img src="Images/logo.png"></div>
             <div id="unity-progress-bar-empty" style="display: none;">
                 <div id="unity-progress-bar-full"></div>
             </div>
@@ -88,11 +88,11 @@
 
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             container.className = "unity-mobile";
-            
+            //config.devicePixelRatio = 1;
         }
 
         // The background image when loading the game. When building a build, the code changes depending on the project settings.
-        
+        loadingCover.style.background = "url('Images/background.png') center / cover";
         loadingCover.style.display = "";
 
         let StartUnityInstance;
@@ -281,14 +281,8 @@
                 // Additional init1 modules
 
                 // Additional init2 modules
-await InitPlayer();
-LogStyledMessage('Init Authorization ysdk');
-
 
                 // Additional init modules
-await LoadCloud();
-LogStyledMessage('Init Storage ysdk');
-
 
                 initYSDK = true;
                 if (ygGameInstance != null)
@@ -316,121 +310,10 @@ LogStyledMessage('Init Storage ysdk');
         }
 
         // Additional script modules
-LogStyledMessage('[PluginYG2 v2.008] [Build: 24] [Platform: YandexGames]');
-
-var cloudSaves = NO_DATA;
-
-function SaveCloud(jsonData, flush) {
-    if (player == null) {
-        console.error('CRASH Save Cloud: ', 'Didnt have time to load');
-        return;
-    }
-    try {
-        player.setData({
-            saves: [jsonData],
-        }, flush);
-    } catch (e) {
-        console.error('CRASH Save Cloud: ', e.message);
-    }
-}
-
-function LoadCloud() {
-    return new Promise((resolve) => {
-        if (ysdk == null) {
-            Final(NO_DATA);
-            return;
-        }
-        try {
-            player.getData(["saves"]).then(data => {
-                if (data.saves) {
-                    Final(JSON.stringify(data.saves));
-                } else {
-                    Final(NO_DATA);
-                }
-            }).catch(() => {
-                console.error('Load Cloud Error!');
-                Final(NO_DATA);
-            });
-        }
-        catch (e) {
-            console.error('CRASH Load saves Cloud: ', e.message);
-            Final(NO_DATA);
-        }
-
-        function Final(res) {
-            cloudSaves = res;
-            YG2Instance('SetLoadSaves', res);
-            resolve(res);
-        }
-    });
-}
-
-var playerData = NO_DATA;
-let player = null;
-
-async function InitPlayer() {
-    return new Promise(async (resolve) => {
-        try {
-            if (!ysdk)
-                return Final(NotAuthorized(false));
-
-            player = await ysdk.getPlayer();
-
-            if (!player.isAuthorized())
-                return Final(NotAuthorized());
-
-            const authJson = {
-                "playerAuth": "resolved",
-                "playerName": player.getName(),
-                "playerId": player.getUniqueID(),
-                "playerPhoto": player.getPhoto('medium'),
-                "payingStatus": player.getPayingStatus()
-            };
-
-            return Final(JSON.stringify(authJson));
-        } catch (e) {
-            console.error('CRASH init Player: ', e.message);
-            return Final(NotAuthorized(false));
-        }
-
-        function Final(res) {
-            playerData = res;
-            YG2Instance('SetAuth', res);
-            resolve(res);
-        }
-    });
-}
-
-
-function NotAuthorized(isInitSDK = true) {
-    let authJson = {
-        "playerAuth": "rejected",
-        "playerName": "unauthorized",
-        "playerId": isInitSDK ? player.getUniqueID() : "unauthorized",
-        "playerPhoto": "no data",
-        "payingStatus": "unknown"
-    };
-    return JSON.stringify(authJson);
-}
-
-function OpenAuthDialog() {
-    if (ysdk !== null) {
-        try {
-            ysdk.auth.openAuthDialog().then(() => {
-                InitPlayer()
-                    .then(() => {
-                        YG2Instance('LoggedIn');
-                    });
-            });
-        }
-        catch (e) {
-            LogStyledMessage('CRASH Open Auth Dialog: ', e.message);
-        }
-    }
-}
-
 
         document.body.appendChild(script);
     </script>
+
+<script>console.log('%c' + '[PluginYG2 v2.008] [Build: 25] [Platform: Null]', 'color: #FFDF73; background-color: #454545');</script>
 </body>
 </html>

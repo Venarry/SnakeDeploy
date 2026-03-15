@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
 
     <!-- Yandex Games SDK -->
-    <script src="/sdk.js"></script>
+    //<script src="/sdk.js"></script>
 
     <style>
         canvas:focus {
@@ -49,8 +49,10 @@
     </div>
 
     <!-- Additional body modules -->
+<div id="test-label" onclick="hideTestLabel()">Test build: 29</div>
 
-    <script>
+
+    <script>/*
         const hideFullScreenButton = "";
         const buildUrl = "Build";
         const loaderUrl = buildUrl + "/WebBuild.loader.js";
@@ -92,8 +94,8 @@
         }
 
         // The background image when loading the game. When building a build, the code changes depending on the project settings.
-
-        /*loadingCover.style.display = "";
+        
+        loadingCover.style.display = "";
 
         let StartUnityInstance;
         let ygGameInstance = null;
@@ -316,7 +318,11 @@ LogStyledMessage('Init Storage ysdk');
         }
 
         // Additional script modules
-LogStyledMessage('[PluginYG2 v2.008] [Build: 28] [Platform: YandexGames]');
+LogStyledMessage('[PluginYG2 v2.008] [Build: 29] [Platform: YandexGames]');
+
+function hideTestLabel() {
+		document.getElementById('test-label').style.display = 'none';
+	}
 
 var cloudSaves = NO_DATA;
 

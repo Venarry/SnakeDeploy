@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
 
     <!-- Yandex Games SDK -->
+    <script src="/sdk.js"></script>
 
     <style>
         canvas:focus {
@@ -48,10 +49,8 @@
     </div>
 
     <!-- Additional body modules -->
-<div id="test-label" onclick="hideTestLabel()">Test build: 29</div>
 
-
-    <script>/*
+    <script>
         const hideFullScreenButton = "";
         const buildUrl = "Build";
         const loaderUrl = buildUrl + "/WebBuild.loader.js";
@@ -204,7 +203,7 @@
             };
             
             InstallBlurFocusBlocker();
-            InitYSDK();
+            //InitYSDK();
             
             if (IsLocalHost() || syncInit)
                 StartUnityInstance_IfUnloaded();
@@ -317,11 +316,7 @@ LogStyledMessage('Init Storage ysdk');
         }
 
         // Additional script modules
-LogStyledMessage('[PluginYG2 v2.008] [Build: 29] [Platform: YandexGames]');
-
-function hideTestLabel() {
-		document.getElementById('test-label').style.display = 'none';
-	}
+LogStyledMessage('[PluginYG2 v2.008] [Build: 24] [Platform: YandexGames]');
 
 var cloudSaves = NO_DATA;
 
@@ -435,7 +430,7 @@ function OpenAuthDialog() {
 }
 
 
-        document.body.appendChild(script);*/
+        document.body.appendChild(script);
     </script>
 </body>
 </html>

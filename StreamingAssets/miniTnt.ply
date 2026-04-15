@@ -1,0 +1,38 @@
+ply
+format ascii 1.0
+comment : MagicaVoxel @ Ephtracy
+element vertex 27
+property float x
+property float y
+property float z
+property uchar red
+property uchar green
+property uchar blue
+end_header
+-1 -1 0 170 0 0
+0 -1 0 170 0 0
+1 -1 0 170 0 0
+-1 0 0 170 0 0
+0 0 0 136 0 0
+1 0 0 170 0 0
+-1 1 0 170 0 0
+0 1 0 170 0 0
+1 1 0 170 0 0
+-1 -1 1 170 170 170
+0 -1 1 34 34 34
+1 -1 1 170 170 170
+-1 0 1 34 34 34
+0 0 1 170 170 170
+1 0 1 34 34 34
+-1 1 1 170 170 170
+0 1 1 34 34 34
+1 1 1 170 170 170
+-1 -1 2 170 0 0
+0 -1 2 170 0 0
+1 -1 2 170 0 0
+-1 0 2 170 0 0
+0 0 2 136 0 0
+1 0 2 170 0 0
+-1 1 2 170 0 0
+0 1 2 170 0 0
+1 1 2 170 0 0
